@@ -6,7 +6,7 @@ RSpec.describe 'PathToPrincess1' do
   end
 
   describe '#find_character_location' do
-    it 'finds the index of both array dimensions' do
+    it 'Finds the index of both array dimensions' do
       grid = [['p','-','-'], ['-','m','-'], ['-','-','-']]
 
       expect(@game.find_character_location(grid, 'm')).to eq([1,1])
@@ -16,6 +16,22 @@ RSpec.describe 'PathToPrincess1' do
 
       expect(@game.find_character_location(grid, 'm')).to eq([1,0])
       expect(@game.find_character_location(grid, 'p')).to eq([2,2])
+    end
+  end
+
+  describe '#find_steps' do
+    it 'Outputs the number of vertical and horizontal steps to get to peach' do
+      grid = [['-','-','-'], ['-','m','-'], ['p','-','-']]
+      mario = @game.find_character_location(grid, 'm')
+      peach = @game.find_character_location(grid, 'p')
+
+      expect(@game.find_steps[mario, peach]).to eq([-1,1])
+
+      grid = [['m','-','-'], ['-','-','-'], ['-','-','p']]
+      mario = @game.find_character_location(grid, 'm')
+      peach = @game.find_character_location(grid, 'p')
+
+      expect(@game.find_steps[mario, peach]).to eq([-2,-2])
     end
   end
 end
