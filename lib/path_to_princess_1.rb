@@ -27,6 +27,6 @@ class PathToPrincess1
     mario = find_character_location(grid, 'm')
     peach = find_character_location(grid, 'p')
     steps = find_steps(mario, peach)
-    take_steps(steps)
+    puts take_steps(steps)
   end
 end
