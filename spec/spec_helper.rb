@@ -1,5 +1,5 @@
 require "bundler/setup"
-require "sesac_code_challenge"
+require "./lib/path_to_princess_1"
 
 RSpec.configure do |config|
   # Enable flags like --only-failures and --next-failure
