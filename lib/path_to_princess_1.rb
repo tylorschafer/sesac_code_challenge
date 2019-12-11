@@ -22,4 +22,11 @@ class PathToPrincess1
     end
     output
   end
+
+  def displayPathtoPrincess(n, grid)
+    mario = find_character_location(grid, 'm')
+    peach = find_character_location(grid, 'p')
+    steps = find_steps(mario, peach)
+    take_steps(steps)
+  end
 end
