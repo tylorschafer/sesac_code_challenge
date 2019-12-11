@@ -25,13 +25,13 @@ RSpec.describe 'PathToPrincess1' do
       mario = @game.find_character_location(grid, 'm')
       peach = @game.find_character_location(grid, 'p')
 
-      expect(@game.find_steps[mario, peach]).to eq([-1,1])
+      expect(@game.find_steps(mario, peach)).to eq([-1,1])
 
       grid = [['m','-','-'], ['-','-','-'], ['-','-','p']]
       mario = @game.find_character_location(grid, 'm')
       peach = @game.find_character_location(grid, 'p')
 
-      expect(@game.find_steps[mario, peach]).to eq([-2,-2])
+      expect(@game.find_steps(mario, peach)).to eq([-2,-2])
     end
   end
 end

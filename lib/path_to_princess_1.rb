@@ -5,4 +5,10 @@ class PathToPrincess1
     horizontal_index = grid[vertical_index].index(character)
     [vertical_index, horizontal_index]
   end
+
+  def find_steps(hero, damsel)
+    vertical = hero[0] - damsel[0]
+    horizontal = hero[1] - damsel[1]
+    [vertical, horizontal]
+  end
 end
