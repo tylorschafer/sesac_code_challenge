@@ -11,4 +11,15 @@ class PathToPrincess1
     horizontal = hero[1] - damsel[1]
     [vertical, horizontal]
   end
+
+  def take_steps(steps)
+    output = ''
+    unless steps[0] == 0
+      output << (steps[0] > 0 ? "UP\n" * steps[0] : "DOWN\n" * steps[0].abs)
+    end
+    unless steps[1] == 0
+      output << (steps[1] > 0 ? "LEFT\n" * steps[1] : "RIGHT\n" * steps[1].abs)
+    end
+    output
+  end
 end
