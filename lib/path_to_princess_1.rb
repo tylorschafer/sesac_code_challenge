@@ -3,22 +3,24 @@ class PathToPrincess1
   def find_character_location(grid, character)
     vertical_index = grid.find_index { |row| row.include?(character) }
     horizontal_index = grid[vertical_index].index(character)
-    [vertical_index, horizontal_index]
+    { vertical: vertical_index, horizontal: horizontal_index }
   end
 
   def find_steps(hero, damsel)
-    vertical = hero[0] - damsel[0]
-    horizontal = hero[1] - damsel[1]
-    [vertical, horizontal]
+    vertical = hero[:vertical] - damsel[:vertical]
+    horizontal = hero[:horizontal] - damsel[:horizontal]
+    { vertical: vertical, horizontal: horizontal }
   end
 
   def take_steps(steps)
     output = ''
-    unless steps[0] == 0
-      output << (steps[0] > 0 ? "UP\n" * steps[0] : "DOWN\n" * steps[0].abs)
+    unless steps[:vertical] == 0
+      count = steps[:vertical]
+      output << (count > 0 ? "UP\n" * count : "DOWN\n" * count.abs)
     end
-    unless steps[1] == 0
-      output << (steps[1] > 0 ? "LEFT\n" * steps[1] : "RIGHT\n" * steps[1].abs)
+    unless steps[:horizontal] == 0
+      count = steps[:horizontal]
+      output << (count > 0 ? "LEFT\n" * count : "RIGHT\n" * count.abs)
     end
     output
   end
@@ -28,5 +30,6 @@ class PathToPrincess1
     peach = find_character_location(grid, 'p')
     steps = find_steps(mario, peach)
     puts take_steps(steps)
+    return take_steps(steps)
   end
 end
