@@ -52,4 +52,14 @@ RSpec.describe 'PathToPrincess1' do
       expect(@game.take_steps(steps)).to eq("UP\nUP\nRIGHT\nRIGHT\n")
     end
   end
+
+  describe '#displayPathtoPrincess' do
+    it 'Uses all previous helper methods to output the correctly formatted steps' do
+      grid = [['-','m','-'], ['-','-','-'], ['p','-','-']]
+      expect(@game.findPathtoPrincess(3, grid)).to eq("DOWN\nDOWN\nLEFT\n")
+
+      grid = [['-','m','-','-','-'], ['-','-','-','-','-'], ['-','-','-','-','p'], ['-','-','-','-','-'], ['-','-','-','-','-']]
+      expect(@game.findPathtoPrincess(3, grid)).to eq("DOWN\nDOWN\nRIGHT\nRIGHT\nRIGHT\n")
+    end
+  end
 end
