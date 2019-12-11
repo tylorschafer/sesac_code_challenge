@@ -34,4 +34,22 @@ RSpec.describe 'PathToPrincess1' do
       expect(@game.find_steps(mario, peach)).to eq([-2,-2])
     end
   end
+
+  describe '#take_steps' do
+    it 'Outputs the directions for each step' do
+      grid = [['-','m','-'], ['-','-','-'], ['p','-','-']]
+      mario = @game.find_character_location(grid, 'm')
+      peach = @game.find_character_location(grid, 'p')
+      steps = @game.find_steps(mario, peach)
+
+      expect(@game.take_steps(steps)).to eq("DOWN\nDOWN\nLEFT\n")
+
+      grid = [['-','-','p'], ['-','-','-'], ['m','-','-']]
+      mario = @game.find_character_location(grid, 'm')
+      peach = @game.find_character_location(grid, 'p')
+      steps = @game.find_steps(mario, peach)
+
+      expect(@game.take_steps(steps)).to eq("UP\nUP\nRIGHT\nRIGHT")
+    end
+  end
 end
