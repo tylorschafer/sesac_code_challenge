@@ -4,18 +4,17 @@ class PathToPrincess1
   include StepFinder
 
   def takeSteps(steps)
-    output = ''
-    steps.each do |direction, count|
+    output = steps.map do |direction, count|
       unless count == 0
         if direction == :vertical
           moves = { plus: "UP\n", minus: "DOWN\n" }
         else
           moves = { plus: "LEFT\n", minus: "RIGHT\n" }
         end
-        output << (count > 0 ? moves[:plus] * count : moves[:minus] * count.abs)
+        (count > 0 ? moves[:plus] * count : moves[:minus] * count.abs)
       end
     end
-    output
+    output.join('')
   end
 
   def displayPathtoPrincess(n, grid)
