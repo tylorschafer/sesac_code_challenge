@@ -2,8 +2,7 @@ require 'spec_helper'
 
 RSpec.describe 'StepFinder' do
   before :each do
-    @game1 = PathToPrincess1.new
-    @game2 = PathToPrincess2.new
+    @game = PathToPrincess1.new
   end
 
   describe '#find_character_location' do
