@@ -2,6 +2,8 @@
 
 ## Overview
 * This repo contains the code for the Bot saves princess 1 and 2 challenges. I had a lot of fun playing around with the 2 dimensional matrix logic in these challenges. The following documentation will outline local setup, how to run on Hacker Rank, and the 4 categories of assessment laid out in the challenge directions.
+* Being that both challenges are very similar, I refactored the work done on the first challenge to be completely re-useable in the second challenge. The only difference is how many step directions are returned in the main method.
+* My entire strategy in designing this code base was to make everything as readable and reuseable as possible. While there are surely more concise ways to write out this functionality, every method used in these challenges has a distinct responsbility and is reuseable between challenges.
 
 ## Local Setup
 * This codebase was written with ruby 2.4.1, all dependencies are located in the Gemfile.
@@ -12,14 +14,14 @@
 
 ## Running the challeng on Hacker Rank
 * Loading this code into Hacker Rank should be fairly simple.
-    1. Copy all methods within the class file of the corresponding challenge on Hacker Rank.
-    2. Copy all methods within the `CharacterFinder` module.
+    1. Copy the method within the class file of the corresponding challenge on Hacker Rank.
+    2. Copy all methods within the `StepFinder` module.
     3. With all these methods copied over, the challenge will pass all tests on Hacker Rank.
 
 ## Design
 * I have chosen a fairly simple design pattern for these two challenges.
     * Each "game" is contained within its own class object within the `/app` directory.
-    * Each "game" class contains the unique code needed to run that challenge.
+    * Each "game" class contains the unique method needed to run that challenge.
     * Methods have been designed to have a single responsibility.
     * Methods that are used amongst both games are located in the `/modules` directory.
     * All testing for this repo is located within the `/spec` directory.
@@ -27,7 +29,8 @@
 ## Testing
 * All testing is done through the RSpec testing suite.
     * Every single method contained in the code base has its own dedicated testing block to ensure optimal code functionality.
-    * All tests were written before functionality to maintain a TDD/BDD workflow
+    * All tests were written before functionality to maintain a TDD/BDD workflow.
+    * SimpleCov shows 100% testing coverage.
 
 ## Readability
 * Great care has been taken to ensure the readability of this code base. I like to think that if your code is readable, there becomes much less reason to leave comments all over the place.
