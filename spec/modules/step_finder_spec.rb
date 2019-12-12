@@ -34,4 +34,11 @@ RSpec.describe 'StepFinder' do
       expect(@game.findSteps(mario, peach)).to eq({ vertical: -2,horizontal: -2 })
     end
   end
+
+  describe '#findMoveDirections' do
+    it 'Outputs the possible physical directions based X / Y axis argument' do
+      expect(@game.findMoveDirections(:vertical)).to eq({ plus: "UP\n", minus: "DOWN\n" })
+      expect(@game.findMoveDirections(:horizontal)).to eq({ plus: "LEFT\n", minus: "RIGHT\n" })
+    end
+  end
 end
