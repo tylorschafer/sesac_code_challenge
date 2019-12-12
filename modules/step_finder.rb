@@ -10,4 +10,12 @@ module StepFinder
     horizontal = hero[:horizontal] - damsel[:horizontal]
     { vertical: vertical, horizontal: horizontal }
   end
+
+  def findMoveDirections(direction)
+    if direction == :vertical
+      { plus: "UP\n", minus: "DOWN\n" }
+    else
+      { plus: "LEFT\n", minus: "RIGHT\n" }
+    end
+  end
 end
