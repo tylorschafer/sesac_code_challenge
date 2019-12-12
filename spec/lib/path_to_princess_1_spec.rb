@@ -5,24 +5,6 @@ RSpec.describe 'PathToPrincess1' do
     @game = PathToPrincess1.new
   end
 
-  describe '#take_steps' do
-    it 'Outputs the directions for each step' do
-      grid = [['-','m','-'], ['-','-','-'], ['p','-','-']]
-      mario = @game.findCharacterLocation(grid, 'm')
-      peach = @game.findCharacterLocation(grid, 'p')
-      steps = @game.findSteps(mario, peach)
-
-      expect(@game.takeSteps(steps)).to eq("DOWN\nDOWN\nLEFT\n")
-
-      grid = [['-','-','p'], ['-','-','-'], ['m','-','-']]
-      mario = @game.findCharacterLocation(grid, 'm')
-      peach = @game.findCharacterLocation(grid, 'p')
-      steps = @game.findSteps(mario, peach)
-
-      expect(@game.takeSteps(steps)).to eq("UP\nUP\nRIGHT\nRIGHT\n")
-    end
-  end
-
   describe '#displayPathtoPrincess' do
     it 'Uses all previous helper methods to output the correctly formatted steps' do
       grid = [['-','m','-'], ['-','-','-'], ['p','-','-']]
