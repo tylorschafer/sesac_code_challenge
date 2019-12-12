@@ -1,18 +1,18 @@
 class PathToPrincess1
 
-  def find_character_location(grid, character)
+  def findCharacterLocation(grid, character)
     vertical_index = grid.find_index { |row| row.include?(character) }
     horizontal_index = grid[vertical_index].index(character)
     { vertical: vertical_index, horizontal: horizontal_index }
   end
 
-  def find_steps(hero, damsel)
+  def findSteps(hero, damsel)
     vertical = hero[:vertical] - damsel[:vertical]
     horizontal = hero[:horizontal] - damsel[:horizontal]
     { vertical: vertical, horizontal: horizontal }
   end
 
-  def take_steps(steps)
+  def takeSteps(steps)
     output = ''
     steps.each do |direction, count|
       unless count == 0
@@ -28,10 +28,10 @@ class PathToPrincess1
   end
 
   def displayPathtoPrincess(n, grid)
-    mario = find_character_location(grid, 'm')
-    peach = find_character_location(grid, 'p')
-    steps = find_steps(mario, peach)
-    puts take_steps(steps)
-    return take_steps(steps)
+    mario = findCharacterLocation(grid, 'm')
+    peach = findCharacterLocation(grid, 'p')
+    steps = findSteps(mario, peach)
+    puts takeSteps(steps)
+    return takeSteps(steps)
   end
 end
