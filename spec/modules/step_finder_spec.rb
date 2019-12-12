@@ -7,12 +7,20 @@ RSpec.describe 'StepFinder' do
 
   describe '#find_character_location' do
     it 'Finds the index of both array dimensions' do
-      grid = [['p','-','-'], ['-','m','-'], ['-','-','-']]
+      grid = [
+               ['p','-','-'],
+               ['-','m','-'],
+               ['-','-','-']
+             ]
 
       expect(@game.findCharacterLocation(grid, 'm')).to eq({ vertical: 1, horizontal: 1})
       expect(@game.findCharacterLocation(grid, 'p')).to eq({ vertical: 0, horizontal: 0 })
 
-      grid = [['-','-','-'], ['m','-','-'], ['-','-','p']]
+      grid = [
+               ['-','-','-'],
+               ['m','-','-'],
+               ['-','-','p']
+             ]
 
       expect(@game.findCharacterLocation(grid, 'm')).to eq({ vertical: 1, horizontal: 0 })
       expect(@game.findCharacterLocation(grid, 'p')).to eq({ vertical: 2, horizontal: 2 })
@@ -21,13 +29,21 @@ RSpec.describe 'StepFinder' do
 
   describe '#find_steps' do
     it 'Outputs the number of vertical and horizontal steps to get to peach' do
-      grid = [['-','-','-'], ['-','m','-'], ['p','-','-']]
+      grid = [
+               ['-','-','-'],
+               ['-','m','-'],
+               ['p','-','-']
+             ]
       mario = @game.findCharacterLocation(grid, 'm')
       peach = @game.findCharacterLocation(grid, 'p')
 
       expect(@game.findSteps(mario, peach)).to eq({ vertical: -1,horizontal: 1 })
 
-      grid = [['m','-','-'], ['-','-','-'], ['-','-','p']]
+      grid = [
+               ['m','-','-'],
+               ['-','-','-'],
+               ['-','-','p']
+             ]
       mario = @game.findCharacterLocation(grid, 'm')
       peach = @game.findCharacterLocation(grid, 'p')
 
