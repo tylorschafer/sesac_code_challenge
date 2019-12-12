@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-RSpec.describe 'PathToPrincess1' do
+RSpec.describe 'StepFinder' do
   before :each do
     @game = PathToPrincess1.new
   end
@@ -35,31 +35,22 @@ RSpec.describe 'PathToPrincess1' do
     end
   end
 
-  describe '#take_steps' do
-    it 'Outputs the directions for each step' do
-      grid = [['-','m','-'], ['-','-','-'], ['p','-','-']]
-      mario = @game.findCharacterLocation(grid, 'm')
-      peach = @game.findCharacterLocation(grid, 'p')
-      steps = @game.findSteps(mario, peach)
-
-      expect(@game.takeSteps(steps)).to eq("DOWN\nDOWN\nLEFT\n")
-
-      grid = [['-','-','p'], ['-','-','-'], ['m','-','-']]
-      mario = @game.findCharacterLocation(grid, 'm')
-      peach = @game.findCharacterLocation(grid, 'p')
-      steps = @game.findSteps(mario, peach)
-
-      expect(@game.takeSteps(steps)).to eq("UP\nUP\nRIGHT\nRIGHT\n")
+  describe '#findMoveDirections' do
+    it 'Outputs the possible physical directions based X / Y axis argument' do
+      expect(@game.findMoveDirections(:vertical)).to eq({ plus: "UP\n", minus: "DOWN\n" })
+      expect(@game.findMoveDirections(:horizontal)).to eq({ plus: "LEFT\n", minus: "RIGHT\n" })
     end
   end
 
-  describe '#displayPathtoPrincess' do
-    it 'Uses all previous helper methods to output the correctly formatted steps' do
-      grid = [['-','m','-'], ['-','-','-'], ['p','-','-']]
-      expect(@game.displayPathtoPrincess(3, grid)).to eq("DOWN\nDOWN\nLEFT\n")
+  describe '#directions' do
+    it 'Outputs an array of all upcoming moves based on numerical steps' do
+      steps = { vertical: 1, horizontal: -1 }
+      steps2 = { vertical: 0, horizontal: 2 }
+      steps3 = { vertical: 3, horizontal: 0 }
 
-      grid = [['-','m','-','-','-'], ['-','-','-','-','-'], ['-','-','-','-','p'], ['-','-','-','-','-'], ['-','-','-','-','-']]
-      expect(@game.displayPathtoPrincess(5, grid)).to eq("DOWN\nDOWN\nRIGHT\nRIGHT\nRIGHT\n")
+      expect(@game.directions(steps)).to eq(["UP\n", "RIGHT\n"])
+      expect(@game.directions(steps2)).to eq(["LEFT\n", "LEFT\n"])
+      expect(@game.directions(steps3)).to eq(["UP\n", "UP\n", "UP\n",])
     end
   end
 end

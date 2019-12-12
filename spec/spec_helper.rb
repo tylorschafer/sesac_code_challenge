@@ -1,5 +1,13 @@
+require 'simplecov'
+
+SimpleCov.start do
+  add_filter '/spec'
+end
+
 require "bundler/setup"
 require "./lib/path_to_princess_1"
+require "./lib/path_to_princess_2"
+require "./modules/step_finder"
 
 RSpec.configure do |config|
   # Enable flags like --only-failures and --next-failure
