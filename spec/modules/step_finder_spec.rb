@@ -50,7 +50,7 @@ RSpec.describe 'StepFinder' do
 
       expect(@game.directions(steps)).to eq(["UP\n", "RIGHT\n"])
       expect(@game.directions(steps2)).to eq(["LEFT\n", "LEFT\n"])
-      expect(@game.directions(steps3)).to eq(['UP\n', 'UP\n', 'UP\n',])
+      expect(@game.directions(steps3)).to eq(["UP\n", "UP\n", "UP\n",])
     end
   end
 end
