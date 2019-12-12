@@ -41,4 +41,16 @@ RSpec.describe 'StepFinder' do
       expect(@game.findMoveDirections(:horizontal)).to eq({ plus: "LEFT\n", minus: "RIGHT\n" })
     end
   end
+
+  describe '#directions' do
+    it 'Outputs an array of all upcoming moves based on numerical steps' do
+      steps = { vertical: 1, horizontal: -1 }
+      steps2 = { vertical: 0, horizontal: 2 }
+      steps3 = { vertical: 3, horizontal: 0 }
+
+      expect(@game.directions(steps)).to eq(["UP\n", "RIGHT\n"])
+      expect(@game.directions(steps2)).to eq(["LEFT\n", "LEFT\n"])
+      expect(@game.directions(steps3)).to eq(['UP\n', 'UP\n', 'UP\n',])
+    end
+  end
 end
