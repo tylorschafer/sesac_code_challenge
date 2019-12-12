@@ -7,11 +7,21 @@ RSpec.describe 'PathToPrincess1' do
 
   describe '#displayPathtoPrincess' do
     it 'Uses all previous helper methods to output the correctly formatted steps' do
-      grid = [['-','m','-'], ['-','-','-'], ['p','-','-']]
+      grid = [
+               ['-','m','-'],
+               ['-','-','-'],
+               ['p','-','-']
+             ]
       expect(@game.displayPathtoPrincess(3, grid)).to eq("DOWN\nDOWN\nLEFT\n")
 
-      grid = [['-','m','-','-','-'], ['-','-','-','-','-'], ['-','-','-','-','p'], ['-','-','-','-','-'], ['-','-','-','-','-']]
-      expect(@game.displayPathtoPrincess(5, grid)).to eq("DOWN\nDOWN\nRIGHT\nRIGHT\nRIGHT\n")
+      grid = [
+               ['-','-','-','-','p'],
+               ['-','-','-','-','-'],
+               ['-','-','-','m','-'],
+               ['-','-','-','-','-'],
+               ['-','-','-','-','-']
+             ]
+      expect(@game.displayPathtoPrincess(5, grid)).to eq("UP\nUP\nRIGHT\n")
     end
   end
 end
