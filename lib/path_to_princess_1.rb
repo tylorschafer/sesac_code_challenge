@@ -14,13 +14,15 @@ class PathToPrincess1
 
   def take_steps(steps)
     output = ''
-    unless steps[:vertical] == 0
-      count = steps[:vertical]
-      output << (count > 0 ? "UP\n" * count : "DOWN\n" * count.abs)
-    end
-    unless steps[:horizontal] == 0
-      count = steps[:horizontal]
-      output << (count > 0 ? "LEFT\n" * count : "RIGHT\n" * count.abs)
+    steps.each do |direction, count|
+      unless count == 0
+        if direction == :vertical
+          moves = { plus: "UP\n", minus: "DOWN\n" }
+        else
+          moves = { plus: "LEFT\n", minus: "RIGHT\n" }
+        end
+        output << (count > 0 ? moves[:plus] * count : moves[:minus] * count.abs)
+      end
     end
     output
   end
